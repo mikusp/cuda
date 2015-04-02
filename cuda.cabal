@@ -85,6 +85,8 @@ Library
                         Foreign.CUDA.Driver.Stream
                         Foreign.CUDA.Driver.Texture
                         Foreign.CUDA.Driver.Utils
+                        Foreign.CUDA.NVRTC.Error
+                        Foreign.CUDA.NVRTC.Compile
 
   Other-modules:        Foreign.CUDA.Internal.C2HS
 

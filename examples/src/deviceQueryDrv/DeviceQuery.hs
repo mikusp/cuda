@@ -9,6 +9,7 @@ import Text.PrettyPrint
 
 import Foreign.CUDA.Analysis                            as CUDA
 import qualified Foreign.CUDA.Driver                    as CUDA
+import Foreign.CUDA.NVRTC.Compile
 
 
 main :: IO ()
@@ -16,6 +17,8 @@ main = do
   version       <- CUDA.driverVersion
   printf "CUDA device query (Driver API, statically linked)\n"
   printf "CUDA driver version %d.%d\n" (version`div`1000) ((version`mod`100)`div`10)
+  (_, major, minor) <- nvrtcVersion
+  printf "NVRTC version %d.%d\n" major minor
 
   CUDA.initialise []
   numDevices <- CUDA.count
