@@ -348,6 +348,11 @@ CUresult CUDAAPI cuTexRefSetAddress(size_t *ByteOffset, CUtexref hTexRef, CUdevi
 {
     return cuTexRefSetAddress_v2(ByteOffset, hTexRef, dptr, bytes);
 }
+
+CUresult CUDAAPI cuGraphicsResourceGetMappedPointer(CUdeviceptr *pDevPtr, size_t* pSize, CUgraphicsResource resource)
+{
+    return cuGraphicsResourceGetMappedPointer_v2(pDevPtr, pSize, resource);
+}
 #endif
 
 #if CUDA_VERSION >= 4000

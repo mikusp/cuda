@@ -24,7 +24,11 @@
 #define __OSX_AVAILABLE_BUT_DEPRECATED_MSG(_osxIntro, _osxDep, _iosIntro, _iosDep, _msg)
 #endif
 
+typedef unsigned int GLuint;
+typedef unsigned int GLenum;
+
 #include <cuda.h>
+#include <cudaGL.h>
 #include <cuda_runtime_api.h>
 
 #ifdef __cplusplus
@@ -160,6 +164,7 @@ cuMemcpy2DDtoDAsync
 // #undef cuTexRefSetAddress2D
 #undef cuTexRefGetAddress
 #undef cuGraphicsResourceGetMappedPointer
+#undef cuGraphicsGLRegisterBuffer
 
 CUresult CUDAAPI cuDeviceTotalMem(size_t *bytes, CUdevice dev);
 CUresult CUDAAPI cuCtxCreate(CUcontext *pctx, unsigned int flags, CUdevice dev);
@@ -202,7 +207,7 @@ CUresult CUDAAPI cuMemsetD32(CUdeviceptr dstDevice, unsigned int ui, size_t N);
 CUresult CUDAAPI cuTexRefSetAddress(size_t *ByteOffset, CUtexref hTexRef, CUdeviceptr dptr, size_t bytes);
 // CUresult CUDAAPI cuTexRefSetAddress2D(CUtexref hTexRef, const CUDA_ARRAY_DESCRIPTOR *desc, CUdeviceptr dptr, unsigned int Pitch);
 // CUresult CUDAAPI cuTexRefGetAddress(CUdeviceptr *pdptr, CUtexref hTexRef);
-// CUresult CUDAAPI cuGraphicsResourceGetMappedPointer(CUdeviceptr *pDevPtr, unsigned int *pSize, CUgraphicsResource resource);
+CUresult CUDAAPI cuGraphicsResourceGetMappedPointer(CUdeviceptr *pDevPtr, size_t *pSize, CUgraphicsResource resource);
 #endif
 
 #if CUDA_VERSION >= 4000
